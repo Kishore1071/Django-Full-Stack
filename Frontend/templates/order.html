@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if from_dashboard == False %}
+
+<div class="title">
+
+    <h3 class="title-text">Order Management</h3>
+
+</div>
+
+<div class="menu-content">
+    <div class="menu-sub-content">
+        <div class="buttons-division">
+            <a href="/order/add/">
+                <button class="add-button">+ Add Order</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% if from_dashboard == True %}
+
+<div class="title">
+
+    <h3 class="title-text">Orders To Customer</h3>
+
+</div>
+
+<div class="menu-content">
+    <div class="menu-sub-content">
+        <div class="buttons-division">
+            <a href="/dashboard/">
+                <button class="go-back-button">Go Back</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Customer Name</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Order Date</th>
+                <th>Amount</th>
+                <th>Gst Amount</th>
+                <th>Bill Amount</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in all_orders %}
+
+                <tr>
+                    <td>{{order.order_number}}</td>
+                    <td>{{order.customer.customer_name}}</td>
+                    <td>{{order.product.product_name}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.order_date}}</td>
+                    <td>{{order.amount}}</td>
+                    <td>{{order.gst_amount}}</td>
+                    <td>{{order.bill_amount}}</td>
+                    <td>
+                        {% if order.status == 0 %}
+
+                            Pending
+
+                        {% elif order.status == 1 %}
+
+                            Out For Delivery
+
+                        {% elif order.status == 2 %}
+
+                            Delivered
+
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="editing-division">
+                            <a class="editing-buttons" href="{% url 'order_update' order.id %}">
+                                <button class="update-button">Update</button>
+                            </a>
+                        </div>
+                        
+                    </td>
+                    <td>
+                        <div class="editing-division">
+                            
+                            <a class="editing-buttons" href="{% url 'order_delete' order.id %}">
+                                <button class="delete-button">Delete</button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

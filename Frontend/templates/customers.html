@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="title">
+
+    <h3 class="title-text">Customer Management</h3>
+
+</div>
+
+<div class="menu-content">
+    <div class="menu-sub-content">
+        <div class="buttons-division">
+            <a href="/customer/add/">
+                <button class="add-button">+ Add Customer</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Company Name</th>
+                <th>Comapny Location</th>
+                <th>Update Data</th>
+                <th>Delete Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customer_data %}
+
+            <tr>
+                <td>{{customer.customer_name}}</td>
+                <td>{{customer.company_name}}</td>
+                <td>{{customer.location}}</td>
+                <td>
+                    <div class="editing-division">
+                        <a class="editing-buttons" href="{% url 'customer_update' customer.id %}">
+                            <button class="update-button">Update</button>
+                        </a>
+                    </div>
+                    
+                </td>
+                <td>
+                    <div class="editing-division">
+                        
+                        <a class="editing-buttons" href="{% url 'customer_delete' customer.id %}">
+                            <button class="delete-button">Delete</button>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

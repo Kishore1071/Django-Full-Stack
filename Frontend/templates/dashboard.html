@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="title">
+
+    <h3 class="title-text">Welcome {{username}}!</h3>
+
+</div>
+
+<div class="ds-main-div">
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Total Orders</th>
+                <th>Pending Orders</th>
+                <th>Out For Delivery</th>
+                <th>Deliverd</th>
+                <th>View All</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in all_customers_data %}
+
+            <tr>
+                <td>{{customer.customer_name}}</td>
+                <td>{{customer.total_orders}}</td>
+                <td>{{customer.pending_order}}</td>
+                <td>{{customer.out_for_delivery}}</td>
+                <td>{{customer.delivered}}</td>
+                <td>
+                    <div class="editing-division">
+                        <a href="{% url 'orders_to_customers' customer.customer_id %}" class="editing-buttons">
+                            <button class="add-button"> All Orders</button>
+                        </a>
+                    </div>
+                </td>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

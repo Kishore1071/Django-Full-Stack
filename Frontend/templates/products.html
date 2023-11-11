@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="title">
+
+    <h3 class="title-text">Product Management</h3>
+
+</div>
+
+<div class="menu-content">
+    <div class="menu-sub-content">
+        <div class="buttons-division">
+            <a href="/product/add/">
+                <button class="add-button">+ Add Product</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Code</th>
+                <th>Price</th>
+                <th>Gst %</th>
+                <th>Update Data</th>
+                <th>Delete Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in product_data %}
+
+            <tr>
+                <td>{{product.product_name}}</td>
+                <td>{{product.code}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.gst}}</td>
+                <td>
+                    <div class="editing-division">
+                        <a class="editing-buttons" href="{% url 'product_update' product.id %}">
+                            <button class="update-button">Update</button>
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <div class="editing-division">
+                        <a class="editing-buttons" href="{% url 'product_delete' product.id %}">
+                            <button class="delete-button">Delete</button>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="menu-content">
+    <div class="menu-sub-content">
+        <div class="buttons-division">
+            <a href="/customers/">
+                <button class="go-back-button"><i class='bx bx-arrow-back'></i> Go Back</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+    <div class="form-container">
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{customer_form}}
+
+            <input type="submit">
+        </form>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/addpage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/formstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'images/amazon_logo.jpg' %}" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">Amazon.in</span>
+                    <span class="profession">Server Application</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle' ></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/dashboard/">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/customers/">
+                            <i class='bx bx-user-pin icon'></i>
+                            <span class="text nav-text">Customers</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/products/">
+                            <i class='bx bxs-package icon'></i>
+                            <span class="text nav-text">Products</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/orders/">
+                            <i class='bx bx-pie-chart icon'></i>
+                            <span class="text nav-text">Order</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon'></i>
+                            <span class="text nav-text">Best Selling</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">Payments</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="/logout/">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="home">
+        {% block content %}
+
+        {% endblock %}
+    </section>
+
+
+
+    <script src="{% static 'js/main_script.js' %}"></script>
+</body>
+</html>

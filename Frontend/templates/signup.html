@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+
+    <div class="form-div">
+
+        <h3>SignUp Form</h3>
+
+        <form action="/signup/" method="POST" class="form-layout">
+
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Create user name(only letters and numbers)" required>
+            <br>
+
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name" required>
+            <br>
+
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name" required>
+            <br>
+
+            <label for="email_address">Email Address</label>
+            <input type="email" name="email_address" id="email_address" required>
+            <br>
+
+            <label for="create_password">Create Password</label>
+            <input type="password" name="create_password" id="create_password" required>
+            <br>
+
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" id="confirm_password"required>
+            <br>
+
+            <input type="submit" value="SignUp"></input>
+
+        </form>
+
+        <p class="registerPara">Existing User? <a href="/"><button class="routing-button">Login</button></a></p>  
+
+    </div>
+</body>
+</html>
