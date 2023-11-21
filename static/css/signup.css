@@ -27,6 +27,8 @@ input[type=submit] {
     font-size: 15px;
 }
 
+
+
 .routing-button {
     margin-left: 5px;
     border: none;
@@ -46,7 +48,7 @@ input[type=submit] {
 .form-layout {
     background-color: aquamarine;
     position: absolute;
-    top: 15%;
+    top: 10%;
     width: 30%;
     padding: 20px;
     border-radius: 20px;
@@ -57,9 +59,4 @@ input[type=submit] {
     /* top: 87%; */
     margin-top: 650px;
     margin-bottom: 50px;
-}
-
-.loginPara {
-    position: absolute;
-    top: 52%;
 }

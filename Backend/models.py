@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User, AbstractUser
 
 class Customer(models.Model):
 
@@ -46,3 +47,14 @@ class Order(models.Model):
     def __str__(self):
 
         return self.customer.customer_name + " " + self.order_number
+    
+
+class User(AbstractUser):
+
+    role_choices = (
+        (0, 'Admin'),
+        (1, 'Mangager'),
+        (2, 'Employee'),
+    )
+
+    role = models.IntegerField(default=0, choices=role_choices)

@@ -35,12 +35,13 @@ def Signup(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email_address']
+        role = request.POST['role']
         create_password = request.POST['create_password']
         confirm_password = request.POST['confirm_password']
 
         if create_password == confirm_password:
 
-            new_user = User(username = username, email = email, first_name = first_name, last_name = last_name)
+            new_user = User(username = username, email = email, first_name = first_name, last_name = last_name, role = int(role))
 
             new_user.set_password(create_password)
 
@@ -67,6 +68,12 @@ def Logout(request):
 
 def Dashboard(request):
 
+    print(request.user.role)
+
+    if request.user.role == 2:
+
+        return redirect('/customers/')
+
     all_customer_data = []
 
     customers = Customer.objects.all()
@@ -90,20 +97,20 @@ def Dashboard(request):
 
     all_customers = sorted(all_customer_data, key = lambda x: x['total_orders'])
 
-    return render(request, 'dashboard.html', {"username": request.user, 'all_customers_data': all_customers[::-1]})
+    return render(request, 'dashboard.html', {"user": request.user, 'all_customers_data': all_customers[::-1]})
 
 def OrdersToCustomers(request, id):
 
     all_orders = Order.objects.filter(customer_id = id)
     
-    return render(request, 'order.html', {'all_orders': all_orders, 'from_dashboard': True})
+    return render(request, 'order.html', {"user": request.user, 'all_orders': all_orders, 'from_dashboard': True})
 
 
 def Customers(request):
 
     all_customers = Customer.objects.all()
     
-    return render(request, 'customers.html', {'customer_data': all_customers})
+    return render(request, 'customers.html', {"user": request.user, 'customer_data': all_customers})
 
 def CustomerAdd(request):
 
@@ -117,7 +124,7 @@ def CustomerAdd(request):
 
             return redirect('/customers/')
 
-    return render(request, 'customer_add.html', {'customer_form': CustomerForm})
+    return render(request, 'customer_add.html', {"user": request.user, 'customer_form': CustomerForm})
 
 def CustomerUpdate(request, id):
 
@@ -136,7 +143,7 @@ def CustomerUpdate(request, id):
 
     customer_form = CustomerForm(instance=customer)
 
-    return render(request, 'customer_add.html', {'customer_form': customer_form})
+    return render(request, 'customer_add.html', {"user": request.user, 'customer_form': customer_form})
 
 def CustomerDelete(request, id):
 
@@ -151,7 +158,7 @@ def Products(request):
 
     all_products = Product.objects.all()
 
-    return render(request, 'products.html', {'product_data': all_products})
+    return render(request, 'products.html', {"user": request.user, 'product_data': all_products})
 
 def ProductAdd(request):
 
@@ -165,7 +172,7 @@ def ProductAdd(request):
 
             return redirect('/products/')
 
-    return render(request, 'product_add.html', {'product_form': ProductForm})
+    return render(request, 'product_add.html', {"user": request.user, 'product_form': ProductForm})
 
 def ProductUpdate(request, id):
 
@@ -184,7 +191,7 @@ def ProductUpdate(request, id):
 
     product_form = ProductForm(instance=product)
 
-    return render(request, 'product_add.html', {'product_form': product_form})
+    return render(request, 'product_add.html', {"user": request.user, 'product_form': product_form})
 
 def ProductDelete(request, id):
 
@@ -199,7 +206,7 @@ def Orders(request):
 
     all_orders = Order.objects.all()
 
-    return render(request, 'order.html', {'all_orders': all_orders, 'from_dashboard': False})
+    return render(request, 'order.html', {"user": request.user, 'all_orders': all_orders, 'from_dashboard': False})
 
 def OrdersAdd(request):
 
@@ -221,7 +228,7 @@ def OrdersAdd(request):
 
         return redirect('/orders/')
 
-    return render(request, 'order_add.html', {'order_form': OrderForm()})
+    return render(request, 'order_add.html', {"user": request.user, 'order_form': OrderForm()})
 
 def OrdersUpdate(request, id):
 
@@ -245,7 +252,7 @@ def OrdersUpdate(request, id):
 
         return redirect('/orders/')
 
-    return render(request, 'order_add.html', {'order_form': OrderUpdateForm(instance = order)})
+    return render(request, 'order_add.html', {"user": request.user, 'order_form': OrderUpdateForm(instance = order)})
 
 def OrdersDelete(request, id):
 

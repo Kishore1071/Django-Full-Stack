@@ -2,6 +2,22 @@
 
 {% block content %}
 
+<style>
+    .title-text-employee {
+        position: relative;
+        top: 35px;
+        margin-bottom: 50px;
+    }
+</style>
+
+<div class="title">
+
+    <h3 class="title-text-employee">Customer Management</h3>
+
+</div>
+
+{% if user.role != 2 %}
+
 <div class="title">
 
     <h3 class="title-text">Customer Management</h3>
@@ -17,6 +33,8 @@
         </div>
     </div>
 </div>
+
+{% endif %}
 
 <div>
     <table>

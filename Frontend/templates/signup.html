@@ -7,6 +7,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <style>
+
+        body {
+            margin: 0;
+            background-color: antiquewhite;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        input[type=text], input[type=email], input[type=number], input[type=password] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgb(60, 60, 255);
+            color: aliceblue;
+            font-size: 15px;
+        }
+
+        .select-box {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .routing-button {
+            margin-left: 5px;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: rgb(60, 60, 255);
+            color: aliceblue;
+            font-size: 15px;
+        }
+
+
+        .form-div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-layout {
+            background-color: aquamarine;
+            position: absolute;
+            top: 10%;
+            width: 30%;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .registerPara {
+            position: absolute;
+            top: 5%;
+            margin-top: 650px;
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 
     <div class="form-div">
@@ -30,6 +103,15 @@
 
             <label for="email_address">Email Address</label>
             <input type="email" name="email_address" id="email_address" required>
+            <br>
+
+            <label for="confirm_password">User Role</label>
+            <br>
+            <select class="select-box" name="role" id="role">
+                <option value="0">Admin</option>
+                <option value="1">Manager</option>
+                <option value="2">Employee</option>
+            </select>
             <br>
 
             <label for="create_password">Create Password</label>
