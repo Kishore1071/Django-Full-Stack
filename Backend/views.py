@@ -124,7 +124,7 @@ def CustomerAdd(request):
 
             return redirect('/customers/')
 
-    return render(request, 'customer_add.html', {"user": request.user, 'customer_form': CustomerForm})
+    return render(request, 'customer_add.html', {"user": request.user, 'customer_form': CustomerForm()})
 
 def CustomerUpdate(request, id):
 

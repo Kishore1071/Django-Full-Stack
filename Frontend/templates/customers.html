@@ -10,11 +10,14 @@
     }
 </style>
 
+{% if user.role == 2 %}
 <div class="title">
 
     <h3 class="title-text-employee">Customer Management</h3>
 
 </div>
+
+{% endif %}
 
 {% if user.role != 2 %}
 
