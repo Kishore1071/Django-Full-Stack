@@ -22,7 +22,7 @@ def LogIn(request):
 
         else:
 
-            messages.error(request, "No user found with the given credentials")
+            # messages.error(request, "No user found with the given credentials")
             return redirect('/')
 
     return render(request, 'login.html')
@@ -47,8 +47,6 @@ def Signup(request):
 
             new_user.save()
 
-            messages.success(request, "Your account is created.")
-
             return redirect('/')
         
         else:
@@ -60,8 +58,6 @@ def Signup(request):
 def Logout(request):
 
     logout(request)
-
-    messages.success(request, "Logged Out Successfully")
 
     return redirect('/')
 

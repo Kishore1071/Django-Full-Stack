@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import AbstractUser
 
 class Customer(models.Model):
 
@@ -53,7 +53,7 @@ class User(AbstractUser):
 
     role_choices = (
         (0, 'Admin'),
-        (1, 'Mangager'),
+        (1, 'Manager'),
         (2, 'Employee'),
     )
 
