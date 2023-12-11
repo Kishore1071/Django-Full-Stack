@@ -1,0 +1,57 @@
+pip install django
+
+django-admin startproject project_name .
+
+python manage.py startapp app_name
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py runserver
+
+pip install djangorestframework => rest_framework
+
+pip install django-cors-headers => corsheaders
+
+pip install django-rest-swagger => rest_framework_swagger
+
+pip install -U drf-yasg => drf_yasg
+
+pip install mysqlclient
+
+pip install django-filter => django_filters
+
+pip install drf-writable-nested => drf_writable_nested
+
+pip install djangorestframework-simplejwt => rest_framework_simplejwt
+
+pip install django-rest-passwordreset => django_rest_passwordreset
+
+pip install django-mptt
+
+pip install inflect
+
+pip install django-rest-authtoken => rest_framework.authtoken
+
+pip install requests
+
+pip install djangorestframework-recursive  => rest_framework_recursive
+
+pip install python-decouple  => decouple
+
+pip install django-googledrive-storage  => gdstorage
+
+pip freeze > requirements.txt  => to generate requirement file
+
+pip install inflect
+
+pip install celery
+
+pip install sentry-sdk
+
+python3 -m pip install --upgrade pip  => to upgrade pip
+
+pip install channels  => channels
+
+pip install mysql-connector-python
